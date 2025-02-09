@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\File;
 
 
 class ProjectController extends Controller
@@ -154,8 +155,16 @@ class ProjectController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Project $project)
     {
-        //
+        // Pastikan field images bukan array, tapi string path
+        if ($project->images && File::exists(public_path('images_uploads/projek/' . $project->images))) {
+            File::delete(public_path('images_uploads/projek/' . $project->images));
+        }
+
+        // Hapus project dari database
+        $project->delete();
+
+        return redirect()->route('project.index')->with('success', 'Project deleted!');
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\About;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 
 
@@ -114,8 +115,17 @@ class AboutController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(About $about)
     {
         //
+        // Pastikan field images bukan array, tapi string path
+        if ($about->foto && File::exists(public_path('images_uploads/' . $about->foto))) {
+            File::delete(public_path('images_uploads/' . $about->foto));
+        }
+
+        // Hapus project dari database
+        $about->delete();
+
+        return redirect()->route('about.index')->with('success', 'About deleted!');
     }
 }

@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\Admin\AboutController;
+use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use Illuminate\Support\Facades\Route;
@@ -25,4 +27,6 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('about', AboutController::class);
     Route::resource('project', ProjectController::class);
+    Route::resource('gallery', GalleryController::class);
+    Route::resource('user', UserController::class);
 });

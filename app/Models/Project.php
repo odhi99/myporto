@@ -20,4 +20,9 @@ class Project extends Model
     protected $casts = [
         'tech_stack' => 'array'
     ];
+
+    public function galleries()
+    {
+        return $this->hasMany(Gallery::class, 'projects_id', 'id');
+    }
 }

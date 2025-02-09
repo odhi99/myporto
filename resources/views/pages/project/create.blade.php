@@ -25,7 +25,7 @@
             </div>
 
             <div class="section-body">
-                <h2 class="section-title">Tambah About</h2>
+                <h2 class="section-title">Tambah Project</h2>
 
 
 

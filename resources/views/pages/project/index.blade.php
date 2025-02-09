@@ -11,14 +11,14 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>About</h1>
+                <h1>Project</h1>
                 <div class="section-header-button">
                     <a href="{{ route('project.create') }}" class="btn btn-primary">Add New</a>
                 </div>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-                    <div class="breadcrumb-item"><a href="#">About</a></div>
-                    <div class="breadcrumb-item">All About</div>
+                    <div class="breadcrumb-item"><a href="#">Project</a></div>
+                    <div class="breadcrumb-item">All project</div>
                 </div>
             </div>
             <div class="section-body">
@@ -27,9 +27,9 @@
                         @include('layouts.alert')
                     </div>
                 </div>
-                <h2 class="section-title">About</h2>
+                <h2 class="section-title">Project</h2>
                 <p class="section-lead">
-                    You can manage all About, such as editing, deleting and more.
+                    You can manage all project, such as editing, deleting and more.
                 </p>
 
 
@@ -94,7 +94,8 @@
                                                             <i class="fas fa-edit"></i>
                                                             Edit
                                                         </a>
-                                                        <form action="" method="POST" class="ml-2">
+                                                        <form action="{{ route('project.destroy', $data->id) }}"
+                                                            method="POST" class="ml-2">
                                                             <input type="hidden" name="_method" value="DELETE" />
                                                             <input type="hidden" name="_token"
                                                                 value="{{ csrf_token() }}" />

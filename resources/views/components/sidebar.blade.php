@@ -9,27 +9,32 @@
         <ul class="sidebar-menu">
 
             <li class="nav-item  ">
-                <a href="" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
+                <a href="{{ route('home') }}" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
 
             </li>
             <li class="nav-item ">
-                <a href="{{ route('about.index') }}" class="nav-link "><i class="fas fa-columns"></i>
+                <a href="{{ route('about.index') }}" class="nav-link "><i class="fa-solid fa-address-card"></i>
                     <span>About</span></a>
             </li>
 
             <li class="nav-item ">
-                <a href="{{ route('project.index') }}" class="nav-link "><i class="fas fa-columns"></i>
+                <a href="{{ route('project.index') }}" class="nav-link "><i class="fa-solid fa-computer"></i>
                     <span>Project</span></a>
             </li>
 
             <li class="nav-item ">
-                <a href="" class="nav-link "><i class="fas fa-columns"></i>
-                    <span>Attendance</span></a>
+                <a href="{{ route('gallery.index') }}" class="nav-link "><i class="fa-regular fa-image"></i>
+                    <span>Gallery</span></a>
             </li>
 
             <li class="nav-item ">
-                <a href="" class="nav-link "><i class="fas fa-columns"></i>
-                    <span>Permission</span></a>
+                <a href="" class="nav-link "><i class="fa-brands fa-blogger"></i>
+                    <span>Blog</span></a>
+            </li>
+
+            <li class="nav-item ">
+                <a href="{{ route('user.index') }}" class="nav-link "><i class="fa-solid fa-lock"></i>
+                    <span>User</span></a>
             </li>
     </aside>
 </div>

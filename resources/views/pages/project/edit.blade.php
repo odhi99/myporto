@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Edit About')
+@section('title', 'Edit Project')
 
 @push('style')
     <!-- CSS Libraries -->
@@ -25,7 +25,7 @@
             </div>
 
             <div class="section-body">
-                <h2 class="section-title">Edit About</h2>
+                <h2 class="section-title">Edit Project</h2>
                 <div class="card">
                     <form action="{{ route('project.update', $project) }}" method="POST" enctype="multipart/form-data">
                         @csrf
