@@ -9,7 +9,7 @@ class Project extends Model
     //
     protected $fillable = [
         'title',
-        'slug',
+        // 'slug',
         'description',
         'images',
         'client_name',

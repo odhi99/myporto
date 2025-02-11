@@ -28,7 +28,7 @@
             </li>
 
             <li class="nav-item ">
-                <a href="" class="nav-link "><i class="fa-brands fa-blogger"></i>
+                <a href="{{ route('blog.index') }}" class="nav-link "><i class="fa-brands fa-blogger"></i>
                     <span>Blog</span></a>
             </li>
 

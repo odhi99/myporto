@@ -58,7 +58,7 @@ class ProjectController extends Controller
         // dd($request);
         $validated = $request->validate([
             'title' => 'required|max:255',
-            'slug' => 'required|unique:projects',
+            // 'slug' => 'required|unique:projects',
             'description' => 'required',
             // 'images' => 'required|array',
             'images' => 'image|mimes:jpeg,png,jpg|max:2048',
@@ -123,7 +123,7 @@ class ProjectController extends Controller
 
         $validated = $request->validate([
             'title' => 'required|max:255',
-            'slug' => 'required|unique:projects',
+            // 'slug' => 'required|unique:projects',
             'description' => 'required',
             // 'images' => 'required|array',
             'images' => 'image|mimes:jpeg,png,jpg|max:2048',

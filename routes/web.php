@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AboutController;
+use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\UserController;
@@ -29,4 +30,5 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('project', ProjectController::class);
     Route::resource('gallery', GalleryController::class);
     Route::resource('user', UserController::class);
+    Route::resource('blog', BlogController::class);
 });

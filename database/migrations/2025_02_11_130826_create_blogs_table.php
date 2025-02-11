@@ -11,15 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('projects', function (Blueprint $table) {
+        Schema::create('blogs', function (Blueprint $table) {
             $table->id();
             $table->string('title');
             // $table->string('slug')->unique();
-            $table->text('description');
-            $table->longText('images');
-            $table->string('client_name')->nullable();
-            $table->string('client_industry')->nullable();
-            $table->json('tech_stack'); // Simpan dalam format: ["laravel", "flutter", ...]
+            $table->text('content');
+            $table->string('thumbnail');
+            $table->date('publish_date');
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('projects');
+        Schema::dropIfExists('blogs');
     }
 };

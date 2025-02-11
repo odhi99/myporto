@@ -61,7 +61,6 @@
 
                                             <th>No</th>
                                             <th>Title </th>
-                                            <th>Slug</th>
                                             <th>Description</th>
                                             <th>Images</th>
                                             <th>client Name</th>
@@ -73,7 +72,6 @@
                                             <tr>
                                                 <td>{{ $no + 1 }}</td>
                                                 <td>{{ $data->title }}</td>
-                                                <td>{{ $data->slug }}</td>
                                                 <td>{{ $data->description }}</td>
                                                 <td>
                                                     <img src="{{ asset('images_uploads/projek/' . $data->images) }}"
