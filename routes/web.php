@@ -7,15 +7,24 @@ use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\DetailBlogController;
+use App\Http\Controllers\DetailProjectController;
+use App\Http\Controllers\FrontendController;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
 //     return view('welcome');
 // });
 
-Route::get('/', [LoginController::class, 'index'])->name('login')->middleware('guest');
-Route::post('/', [LoginController::class, 'auth'])->name('auth');
+Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::post('/login', [LoginController::class, 'auth'])->name('auth');
 Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
+
+Route::get('/', [FrontendController::class, 'index'])->name('porto');
+Route::get('/detail/{id}', [DetailProjectController::class, 'index'])->name('detail');
+Route::get('/detail-blog/{id}', [DetailBlogController::class, 'index'])->name('detail-blog');
+
+
 
 
 // Dashboard

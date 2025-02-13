@@ -50,6 +50,18 @@
 
                             <div class="form-group">
                                 <label>Deskripsi</label>
+                                <textarea class="form-control @error('description') is-invalid @enderror" name="description" rows="5">
+                                    {{ $project->description }}
+                                </textarea>
+                                @error('description')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+
+                            {{-- <div class="form-group">
+                                <label>Deskripsi</label>
                                 <input type="text"
                                     class="form-control @error('description')
                                 is-invalid
@@ -60,7 +72,7 @@
                                         {{ $message }}
                                     </div>
                                 @enderror
-                            </div>
+                            </div> --}}
                             <div class="form-group">
                                 <label>Images</label>
                                 {{-- Tampilkan foto lama jika ada --}}

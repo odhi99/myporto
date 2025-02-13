@@ -58,37 +58,40 @@
                                 <div class="table-responsive">
                                     <table class="table-striped table">
                                         <tr>
-
                                             <th>No</th>
                                             <th>Title</th>
+                                            <th>Meta Description</th>
+                                            {{-- <th>Tech Stack</th>
+                                            <th>Code Snippets</th> --}}
                                             <th>Publish Date</th>
+                                            <th>Thumbnail</th>
                                             <th>Action</th>
                                         </tr>
-                                        {{-- @foreach ($abouts as $no => $data) --}}
-                                        <tr>
-
-                                            <td></td>
-                                            <td> </td>
-                                            <td>
-                                                <img src="" alt="" width="50">
-                                            </td>
-                                            <td>
-                                                <div class="d-flex justify-content-center">
-                                                    <a href='' class="btn btn-sm btn-info btn-icon">
-                                                        <i class="fas fa-edit"></i>
-                                                        Edit
+                                        @foreach ($blogs as $no => $data)
+                                            <tr>
+                                                <td>{{ $no + 1 }}</td>
+                                                <td>{{ $data->title }}</td>
+                                                <td>{{ $data->meta_description }}</td>
+                                                {{-- <td>{{ is_array($data->tech_stack) ? implode(', ', $data->tech_stack) : '' }}
+                                                </td> --}}
+                                                {{-- <td>
+                                                    @if (is_array($data->code_snippets))
+                                                        <pre>{{ implode("\n", $data->code_snippets) }}</pre>
+                                                    @endif
+                                                </td> --}}
+                                                <td>{{ $data->publish_date }}</td>
+                                                <td>
+                                                    <img src="{{ asset('images_uploads/thumbnail/' . $data->thumbnail) }}"
+                                                        alt="" width="50">
+                                                </td>
+                                                <td>
+                                                    <a href="{{ route('blog.edit', $data->id) }}"
+                                                        class="btn btn-sm btn-info btn-icon">
+                                                        <i class="fas fa-edit"></i> Edit
                                                     </a>
-                                                    <form action="" method="POST" class="ml-2">
-                                                        <input type="hidden" name="_method" value="DELETE" />
-                                                        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                                                        <button class="btn btn-sm btn-danger btn-icon confirm-delete">
-                                                            <i class="fas fa-times"></i> Delete
-                                                        </button>
-                                                    </form>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        {{-- @endforeach --}}
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                     </table>
                                 </div>
                                 <div class="float-right">

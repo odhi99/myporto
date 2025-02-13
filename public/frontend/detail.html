@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detail Project - Portfolio</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="logo">Portfolio</div>
+      <div class="nav-links">
+        <a href="index.html#home">Home</a>
+        <a href="index.html#projects">Projects</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#contact">Contact</a>
+      </div>
+    </nav>
+
+    <!-- Detail Project Section -->
+    <section class="detail-project">
+      <div class="container">
+        <h1>Attendance Facerecognition</h1>
+        <div class="project-info">
+          <div class="project-description">
+            <h2>Deskripsi Project</h2>
+            <p>
+              Sistem absensi berbasis pengenalan wajah menggunakan teknologi
+              Machine Learning Kit dan TensorFlow Lite dalam framework Flutter.
+              Sistem ini memungkinkan perusahaan untuk melakukan absensi secara
+              otomatis dengan akurasi tinggi dan integrasi geolocation untuk
+              memastikan kehadiran di lokasi yang tepat.
+            </p>
+          </div>
+
+          <div class="project-images">
+            <h2>Gambar Project</h2>
+            <div class="thumbnail-grid">
+              <img
+                src="images/blog-1.jpg"
+                alt="Project 1"
+                class="thumbnail"
+                onclick="openModal('images/blog-1.jpg')"
+              />
+              <img
+                src="images/blog-1.jpg"
+                alt="Project 2"
+                class="thumbnail"
+                onclick="openModal('images/blog-1.jpg')"
+              />
+              <img
+                src="images/blog-1.jpg"
+                alt="Project 3"
+                class="thumbnail"
+                onclick="openModal('images/blog-1.jpg')"
+              />
+            </div>
+          </div>
+
+          <div class="tech-stack">
+            <h2>Tech Stack</h2>
+            <div class="tech-icons">
+              <img
+                src="https://skillicons.dev/icons?i=flutter"
+                alt="Flutter"
+                class="tech-icon"
+              />
+              <img
+                src="https://skillicons.dev/icons?i=laravel"
+                alt="Laravel"
+                class="tech-icon"
+              />
+              <img
+                src="https://skillicons.dev/icons?i=firebase"
+                alt="Firebase"
+                class="tech-icon"
+              />
+              <img
+                src="https://skillicons.dev/icons?i=tensorflow"
+                alt="TensorFlow"
+                class="tech-icon"
+              />
+            </div>
+          </div>
+
+          <div class="client-info">
+            <h2>Client</h2>
+            <p><strong>Nama Perusahaan:</strong> PT. Contoh Perusahaan</p>
+            <p><strong>Industri:</strong> Teknologi Informasi</p>
+            <p><strong>Lokasi:</strong> Jakarta, Indonesia</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modal untuk Gambar Besar -->
+    <div id="imageModal" class="modal">
+      <span class="close-modal" onclick="closeModal()">&times;</span>
+      <img class="modal-content" id="modalImage" />
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-3">
+      <div class="container text-center">
+        <p>&copy; <span id="year"></span> All rights reserved</p>
+      </div>
+    </footer>
+
+    <script src="main.js"></script>
+  </body>
+</html>

@@ -1,103 +1,90 @@
 @extends('layouts.app')
 
-@section('title', 'Advanced Forms')
-
-@push('style')
-    <!-- CSS Libraries -->
-    <link rel="stylesheet" href="{{ asset('library/bootstrap-daterangepicker/daterangepicker.css') }}">
-    <link rel="stylesheet" href="{{ asset('library/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('library/select2/dist/css/select2.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('library/selectric/public/selectric.css') }}">
-    <link rel="stylesheet" href="{{ asset('library/bootstrap-timepicker/css/bootstrap-timepicker.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('library/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}">
-@endpush
+@section('title', 'Tambah Blog')
 
 @section('main')
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Advanced Forms</h1>
-                <div class="section-header-breadcrumb">
-                    <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-                    <div class="breadcrumb-item"><a href="#">Forms Tambah</a></div>
-                    <div class="breadcrumb-item">Blog</div>
-                </div>
+                <h1>Tambah Blog</h1>
             </div>
 
             <div class="section-body">
-                <h2 class="section-title">Tambah Blog</h2>
-
-
-
                 <div class="card">
                     <form action="{{ route('blog.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="card-header">
-                            <h4>Input Text</h4>
+                            <h4>Form Tambah Blog</h4>
                         </div>
                         <div class="card-body">
                             <div class="form-group">
-                                <label>About</label>
-                                <input type="text"
-                                    class="form-control @error('about')
-                                is-invalid
-                            @enderror"
-                                    name="about">
-                                @error('about')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
+                                <label>Title</label>
+                                <input type="text" class="form-control @error('title') is-invalid @enderror"
+                                    name="title" value="{{ old('title') }}">
+                                @error('title')
+                                    <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
+
                             <div class="form-group">
-                                <label>Foto</label>
-
-                                {{-- Tempat preview gambar --}}
-                                <div class="mb-3">
-                                    <img id="imagePreview" src="" alt="Preview Foto"
-                                        style="display: none; width: 150px;">
-                                </div>
-
-                                <input type="file" class="form-control @error('foto') is-invalid @enderror"
-                                    name="foto" id="fotoInput" accept="image/*">
-
-                                @error('foto')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
+                                <label>Meta Description</label>
+                                <textarea name="meta_description" class="form-control">{{ old('meta_description') }}</textarea>
                             </div>
 
+                            <div class="form-group">
+                                <label>Content</label>
+                                <textarea name="content" class="form-control" rows="10">{{ old('content') }}</textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Tech Stack (Pisahkan dengan koma)</label>
+                                <input type="text" id="tech_stack_input" class="form-control"
+                                    value="{{ old('tech_stack') }}" placeholder="Contoh: Laravel, Vue.js, Tailwind">
+                                <input type="hidden" name="tech_stack" id="tech_stack_hidden">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Code Snippets (Gunakan format JSON)</label>
+                                <textarea id="code_snippets_input" name="code_snippets" class="form-control" rows="5">{{ old('code_snippets', '[]') }}</textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Thumbnail</label>
+                                <input type="file" class="form-control" name="thumbnail">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Publish Date</label>
+                                <input type="date" class="form-control" name="publish_date"
+                                    value="{{ old('publish_date') }}">
+                            </div>
                         </div>
-                        <div class="card-footer text-right">
+
+                        <div class="card-footer">
                             <button class="btn btn-primary">Submit</button>
                         </div>
                     </form>
                 </div>
-
             </div>
         </section>
     </div>
-@endsection
 
-@push('scripts')
     <script>
-        document.getElementById("fotoInput").addEventListener("change", function(event) {
-            const file = event.target.files[0];
-            const preview = document.getElementById("imagePreview");
+        // Mengubah input tech_stack menjadi JSON array
+        document.getElementById('tech_stack_input').addEventListener('input', function() {
+            let techArray = this.value.split(',').map(item => item.trim());
+            document.getElementById('tech_stack_hidden').value = JSON.stringify(techArray);
+        });
 
-            if (file) {
-                const reader = new FileReader();
-
-                reader.onload = function(e) {
-                    preview.src = e.target.result;
-                    preview.style.display = "block"; // Tampilkan gambar setelah dipilih
-                };
-
-                reader.readAsDataURL(file);
-            } else {
-                preview.style.display = "none"; // Sembunyikan jika tidak ada gambar
+        // Validasi code_snippets agar selalu format JSON yang benar
+        document.getElementById('code_snippets_input').addEventListener('blur', function() {
+            try {
+                let parsed = JSON.parse(this.value);
+                if (!Array.isArray(parsed)) throw new Error("Invalid JSON");
+            } catch (error) {
+                alert("Format JSON tidak valid.");
+                this.value = "[]";
             }
         });
     </script>
-@endpush
+@endsection

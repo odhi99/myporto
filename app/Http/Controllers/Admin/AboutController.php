@@ -42,7 +42,7 @@ class AboutController extends Controller
     {
         // dd($request);
         $validatedData = $request->validate([
-            'about' => 'required|string|max:255',
+            'about' => 'required|string|max:5000',
             'foto' => 'file|mimes:jpeg,png,jpg,gif|max:2048',
 
 
@@ -85,7 +85,7 @@ class AboutController extends Controller
     {
 
         $validatedData = $request->validate([
-            'about' => 'required|string|max:255',
+            'about' => 'required|string|max:5000',
         ]);
 
 

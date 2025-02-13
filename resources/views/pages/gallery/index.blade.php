@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Attendances')
+@section('title', 'Gallery')
 
 @push('style')
     <!-- CSS Libraries -->

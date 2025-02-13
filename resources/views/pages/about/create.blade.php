@@ -38,11 +38,7 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label>About</label>
-                                <input type="text"
-                                    class="form-control @error('about')
-                                is-invalid
-                            @enderror"
-                                    name="about">
+                                <textarea class="form-control @error('about') is-invalid @enderror" name="about" rows="5"></textarea>
                                 @error('about')
                                     <div class="invalid-feedback">
                                         {{ $message }}
